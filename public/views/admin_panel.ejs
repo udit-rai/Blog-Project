@@ -1,0 +1,36 @@
+<head>
+    <link rel="stylesheet" href="styles/admin.css">
+</head>
+<div class="container">
+      <button class="btn-pill">
+        <a href="/writer_panel.ejs"><span>Create</span></a>
+      </button>
+      <button class="btn-shine">
+       <a href="/reader_page.ejs"> <span>Read</span> </a>
+      </button>
+      <button class="btn-slide-line center" onclick="confirmDelete()">
+      <span>Delete</span>
+      </button>
+    </div>
+          <p> Note: No updating allowed.</p>
+
+              <form id="deleteForm" action="/delete-blog" method="POST" style="display: none;">
+        <input type="hidden" name="blogName" id="hiddenblogName">
+    </form>
+
+    <script>
+      function confirmDelete() {
+          const proceed = confirm("Are you sure you want to delete a blog?");
+          if (!proceed) {
+              return;
+          }
+          const blogName = prompt("Enter the name of the blog you want to delete:");
+          if (!blogName) {
+              alert("Blog name cannot be empty.");
+              return;
+          }
+
+          document.getElementById("hiddenblogName").value = blogName;
+          document.getElementById("deleteForm").submit();
+      }
+    </script>

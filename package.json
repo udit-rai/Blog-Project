@@ -1,0 +1,18 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "description": "[Start]    |    v [User Visits Blog]    |    +-----------------------------+    |                             |    v                             v [Is User Admin?]           [Is User Reader?]    |                             |    v                             v [Login Page]                [View Posts]    |                             |    v                             v [Admin Dashboard]          [Read Post Details]    |                             |    |                             v    |                       [Leave Comment?]    |                             |    |                             v    |                       [Submit Comment]    |    v [Manage Posts]    |    +-----------------------------+    |                             |    v                             v [Create/Edit/Delete Post]   [Manage Comments]    |    v [Publish or Save Draft]    |    v [Logout]    |    v [End]",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}

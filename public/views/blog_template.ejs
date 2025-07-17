@@ -1,0 +1,17 @@
+<%- include('views/partials/header.ejs') %>
+<% let title; %>
+<% if (!title) { %>
+  <header>Blog </header>
+  <% } else { %>
+  <header><%= title %></header>
+ <% } %>
+
+ <% let blog_body; %>
+<% if (!blog_body) { %>
+  <p>Body </p>
+  <% } else { %>
+  <header><%= blog_body %></header>
+ <% } %>
+
+<!-- <input id="title" type="text" placeholder="Title"> -->
+  

@@ -1,0 +1,13 @@
+<head>
+    <link rel="stylesheet" href="styles/reader.css">
+</head>
+<section>
+  <div class="list">
+    <ul>
+      <% blogs.forEach(blog => { %>
+       <li> <a href="<%= blog.path %>"> <%= blog.title %></a> </li>
+      <% }) %>
+    </ul>
+  </div>
+  <div class="animation"></div>
+</section>

@@ -1,40 +1,32 @@
-# Blog-Project
+# 📝 Static Blog Generator (No Database)
 
-[Start]
-   |
-   v
-[User Visits Blog]
-   |
-   +-----------------------------+
-   |                             |
-   v                             v
-[Is User Admin?]           [Is User Reader?]
-   |                             |
-   v                             v
-[Login Page]                [View Posts]
-   |                             |
-   v                             v
-[Admin Dashboard]          [Read Post Details]
-   |                             |
-   |                             v
-   |                       [Leave Comment?]
-   |                             |
-   |                             v
-   |                       [Submit Comment]
-   |
-   v
-[Manage Posts]
-   |
-   +-----------------------------+
-   |                             |
-   v                             v
-[Create/Edit/Delete Post]   [Manage Comments]
-   |
-   v
-[Publish or Save Draft]
-   |
-   v
-[Logout]
-   |
-   v
-[End]
+A simple Express.js blog app. Stores and Displays blogs based on login features.
+
+---
+
+## 🚀 Features
+
+- Two user roles: **Admin** and **Reader**
+- Admin has CRD privileges (Create, Read and Delete)
+- Reader has only read privileges.
+- To avoid database, all blogs are saved as `.html` files in `/public/blogs`
+- Clean separation of views, routes, and static files
+
+## 🚑 Security Issues
+- No Session Cookies
+- No OWASP or similar Checklist followed
+
+---
+
+## 🛠️ Tech Stack
+
+- Node.js
+- Express.js
+- EJS (templating engine)
+- Vanilla HTML/CSS
+- File System (Node `fs` module)
+
+---
+
+## 📁 Project Structure
+

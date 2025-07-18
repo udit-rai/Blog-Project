@@ -84,7 +84,8 @@ function PanelWrite(req, res, next) {
         </body>
     </html>`;
 
-        const filePath = `./public/blogs/${safeTitle}.html`;
+        // const filePath = `./public/blogs/${safeTitle}.html`; for offline testing
+        const filePath = path.join("/tmp", `${safeTitle}.html`); //for render deployment
         fs.writeFile(filePath, htmlAppend, (err) => {
         if (err) {
         console.error("Error writing blog file:", err);

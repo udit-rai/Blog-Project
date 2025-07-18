@@ -25,3 +25,7 @@ A simple Express.js blog app. Stores and Displays blogs based on login features.
 - EJS (templating engine)
 - Vanilla HTML/CSS
 - File System (Node `fs` module)
+
+## Not Deployed
+Due to lack of database, Render and similar services wipe blogs before we can pivot to another pages to perform any CRUD operations on them, leaving behind only the blogs I had hardcoded to my Github originally. 
+You may download and test locally. Have fun!!

@@ -37,7 +37,7 @@ function readerLoad(req, res) {
       return res.status(500).send("Could not load blogs");
     }
 
-    const blogFiles = files.filter(file => typeof file === "string" && file.endsWith(".html")););
+    const blogFiles = files.filter(file => typeof file === "string" && file.endsWith(".html"));
     const blogLinks = blogFiles.map(file => ({
         title: file.replace(".html", ""),
         path: `blogs/${file}`

@@ -25,8 +25,3 @@ A simple Express.js blog app. Stores and Displays blogs based on login features.
 - EJS (templating engine)
 - Vanilla HTML/CSS
 - File System (Node `fs` module)
-
----
-
-## 📁 Project Structure
-

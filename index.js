@@ -3,6 +3,8 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
 import fs from "fs";
+import dotenv from "dotenv";
+dotenv.config();
 // import { bodyparser } from "body-parser";
 
 const app = express();
@@ -23,19 +25,6 @@ app.get("/blog", (req, res) => {
     res.render("blog_template.ejs");
 });
 
-app.post("/login", (req, res) => {
-    const password = req.body.password;
-    if (password === "admin_admin") {
-        res.render("admin_panel.ejs");
-    }
-    else if (password === "reader_reader") {
-        res.render("reader_page.ejs");
-    }
-    else {
-        res.send("Incorrect password");
-    }
-});
-
 app.get("/writer_panel.ejs", (req, res) => {
     res.render("writer_panel.ejs");
 });
@@ -48,13 +37,28 @@ function readerLoad(req, res) {
       return res.status(500).send("Could not load blogs");
     }
 
-    const blogFiles = files.filter(file => file.endsWith(".html"));
+    const blogFiles = files.filter(file => typeof file === "string" && file.endsWith(".html"));
     const blogLinks = blogFiles.map(file => ({
         title: file.replace(".html", ""),
         path: `blogs/${file}`
     }));
     res.render("reader_page.ejs", { blogs: blogLinks }); })
 }
+
+app.post("/login", (req, res) => {
+    const adminPass = process.env.ADMIN_PASSWORD;
+    const readerPass = process.env.READER_PASSWORD;
+    const password = req.body.password;
+    if (password === adminPass) {
+        res.render("admin_panel.ejs");
+    }
+    else if (password === readerPass) {
+        readerLoad(req, res);
+    }
+    else {
+        res.send("Incorrect password");
+    }
+});
 
 app.get("/reader_page.ejs", readerLoad);
 

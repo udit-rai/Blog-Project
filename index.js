@@ -25,7 +25,7 @@ app.get("/blog", (req, res) => {
     res.render("blog_template.ejs");
 });
 
-app.get("/writer_panel.ejs", (req, res) => {
+app.get("/writer_panel", (req, res) => {
     res.render("writer_panel.ejs");
 });
 
@@ -53,14 +53,14 @@ app.post("/login", (req, res) => {
         res.render("admin_panel.ejs");
     }
     else if (password === readerPass) {
-        readerLoad(req, res);
+    res.redirect("/reader"); // not res.render(readerLoad)
     }
     else {
         res.send("Incorrect password");
     }
 });
 
-app.get("/reader_page.ejs", readerLoad);
+app.get("/reader_page", readerLoad);
 
 function PanelWrite(req, res, next) {
     const title = req.body.title;

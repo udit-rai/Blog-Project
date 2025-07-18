@@ -25,7 +25,7 @@ app.get("/blog", (req, res) => {
     res.render("blog_template.ejs");
 });
 
-app.get("/writer_panel", (req, res) => {
+app.get("/writer_panel.ejs", (req, res) => {
     res.render("writer_panel.ejs");
 });
 
@@ -37,7 +37,7 @@ function readerLoad(req, res) {
       return res.status(500).send("Could not load blogs");
     }
 
-    const blogFiles = files.filter(file => typeof file === "string" && file.endsWith(".html"));
+    const blogFiles = files.filter(file => typeof file === "string" && file.endsWith(".html")););
     const blogLinks = blogFiles.map(file => ({
         title: file.replace(".html", ""),
         path: `blogs/${file}`
@@ -53,14 +53,14 @@ app.post("/login", (req, res) => {
         res.render("admin_panel.ejs");
     }
     else if (password === readerPass) {
-    res.redirect("/reader"); // not res.render(readerLoad)
+        res.render(readerLoad(req, res));
     }
     else {
         res.send("Incorrect password");
     }
 });
 
-app.get("/reader_page", readerLoad);
+app.get("/reader_page.ejs", readerLoad);
 
 function PanelWrite(req, res, next) {
     const title = req.body.title;
@@ -84,8 +84,7 @@ function PanelWrite(req, res, next) {
         </body>
     </html>`;
 
-        // const filePath = `./public/blogs/${safeTitle}.html`; for offline testing
-        const filePath = path.join("/tmp", `${safeTitle}.html`); //for render deployment
+        const filePath = `./public/blogs/${safeTitle}.html`;
         fs.writeFile(filePath, htmlAppend, (err) => {
         if (err) {
         console.error("Error writing blog file:", err);
@@ -99,8 +98,8 @@ app.post("/write_to_panel", PanelWrite);
 
 app.post("/delete-blog", (req, res) => {
     const blogTitle = req.body.blogName;
-    const safeName = blogTitle.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-    const filePath = path.join(__dirname, "public", "blogs", `${safeName}.html`);
+    // const safeName = blogTitle.replace(/[^a-z0-9]/gi, "_").toLowerCase();
+    const filePath = path.join(__dirname, "public", "blogs", `${blogTitle}.html`);
     fs.unlink(filePath, (err) => {
         if (err) {
             console.error("Error deleting blog file:", err);
